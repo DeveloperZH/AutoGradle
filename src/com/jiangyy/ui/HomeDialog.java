@@ -54,6 +54,7 @@ public class HomeDialog extends JFrame {
 
         JBTable table = new JBTable(new MyTableModel(ALL_DATA));
         table.setPreferredScrollableViewportSize(new Dimension(800, 300));
+        table.setRowHeight(36);
         table.setFillsViewportHeight(true);
 //        table.getTableHeader().setDefaultRenderer(new CheckHeaderCellRenderer(table));
         table.addMouseListener(new MouseListener() {

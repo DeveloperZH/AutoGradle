@@ -13,6 +13,11 @@ public class SettingsTableModel extends AbstractTableModel {
         this.allData = ALL_DATA;
     }
 
+    public void notify(List<Repository> data) {
+        this.allData = data;
+        fireTableDataChanged();
+    }
+
     private String[] columnNames = {"Repository", "Version", "Version_x", "Address"};
 
     @Override
@@ -89,7 +94,6 @@ public class SettingsTableModel extends AbstractTableModel {
         }
         fireTableCellUpdated(rowIndex, columnIndex);
     }
-
 
 
 }
