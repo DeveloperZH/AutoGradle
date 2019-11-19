@@ -52,7 +52,6 @@ public class HomeDialog extends JFrame {
 //        setModal(true);
         setTitle("Auto Gradle");
         getRootPane().setDefaultButton(buttonOK);
-
         JBTable table = new JBTable(new HomeTableModel(ALL_DATA));
         table.setPreferredScrollableViewportSize(new Dimension(800, 300));
         table.setRowHeight(36);

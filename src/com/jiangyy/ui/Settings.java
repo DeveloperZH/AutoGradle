@@ -39,6 +39,8 @@ public class Settings implements Configurable {
     private List<Repository> tempRepositories;
     private String tempRepositoriesStr;
 
+    private final String KEY = "alldata";
+
     /**
      * 在settings中显示的名称
      *
@@ -59,10 +61,10 @@ public class Settings implements Configurable {
     @Override
     public JComponent createComponent() {
 
-        tempRepositoriesStr = PropertiesComponent.getInstance().getValue("alldata");
+        tempRepositoriesStr = PropertiesComponent.getInstance().getValue(KEY);
         if (tempRepositoriesStr == null || tempRepositoriesStr.isEmpty()) {
             tempRepositoriesStr = JSON_STR;
-            PropertiesComponent.getInstance().setValue("alldata", JSON_STR);
+            PropertiesComponent.getInstance().setValue(KEY, JSON_STR);
         }
         ORepositories = JSON.parseArray(JSON_STR, Repository.class);
         tempRepositories = JSON.parseArray(tempRepositoriesStr, Repository.class);
@@ -105,7 +107,7 @@ public class Settings implements Configurable {
             dialog.pack();
             dialog.setVisible(true);
         });
-        buttonReset.addActionListener(e->{
+        buttonReset.addActionListener(e -> {
             tempRepositories = ORepositories;
             model.notify(tempRepositories);
             isModified = true;
@@ -176,7 +178,9 @@ public class Settings implements Configurable {
      */
     @Override
     public void apply() throws ConfigurationException {
-        PropertiesComponent.getInstance().setValue("alldata", tempRepositoriesStr);
+        PropertiesComponent.getInstance(
+
+        ).setValue(KEY, tempRepositoriesStr);
     }
 
     /**
