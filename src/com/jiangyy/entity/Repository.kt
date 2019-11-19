@@ -1,7 +1,6 @@
 package com.jiangyy.entity
 
 class Repository(
-
         var isChoose: Boolean,
         var name: String,
         var user: String,
@@ -15,11 +14,3 @@ class Repository(
         var remark: String,
         var latest_version: String
 )
-
-class Resp(
-        val created_at: String,
-        val name: String,
-        val published_at: String,
-        val tag_name: String
-)
-

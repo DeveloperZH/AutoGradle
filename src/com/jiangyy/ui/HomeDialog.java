@@ -11,8 +11,8 @@ import com.intellij.openapi.editor.CaretModel;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.ui.components.JBScrollPane;
 import com.intellij.ui.table.JBTable;
+import com.jiangyy.entity.GitResp;
 import com.jiangyy.entity.Repository;
-import com.jiangyy.entity.Resp;
 import okhttp3.*;
 
 import javax.swing.*;
@@ -53,7 +53,7 @@ public class HomeDialog extends JFrame {
         setTitle("Auto Gradle");
         getRootPane().setDefaultButton(buttonOK);
 
-        JBTable table = new JBTable(new MyTableModel(ALL_DATA));
+        JBTable table = new JBTable(new HomeTableModel(ALL_DATA));
         table.setPreferredScrollableViewportSize(new Dimension(800, 300));
         table.setRowHeight(36);
         table.setFillsViewportHeight(true);
@@ -204,7 +204,7 @@ public class HomeDialog extends JFrame {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                Resp bean = JSON.parseObject(response.body().string(), Resp.class);
+                GitResp bean = JSON.parseObject(response.body().string(), GitResp.class);
                 table.setValueAt(bean.getName(), row, 5);
                 showNotification(repository.getName(), "更新成功", repository.getName() + " 更新完成：" + bean.getTag_name());
             }

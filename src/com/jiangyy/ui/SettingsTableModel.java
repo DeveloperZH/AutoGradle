@@ -42,7 +42,7 @@ public class SettingsTableModel extends AbstractTableModel {
 
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
-        return true;
+        return false;
     }
 
     @Override
@@ -65,10 +65,6 @@ public class SettingsTableModel extends AbstractTableModel {
                 o = "Github";
                 break;
             }
-            case 4: {
-                o = allData.get(rowIndex).getRemark();
-                break;
-            }
             default: {
                 o = "";
                 break;
@@ -80,14 +76,11 @@ public class SettingsTableModel extends AbstractTableModel {
     @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
         switch (columnIndex) {
-            case 2:
+            case 1:
                 allData.get(rowIndex).setVersion((String) aValue);
                 break;
-            case 3:
+            case 2:
                 allData.get(rowIndex).setVersion_x((String) aValue);
-                break;
-            case 5:
-                allData.get(rowIndex).setRemark((String) aValue);
                 break;
             default:
                 break;

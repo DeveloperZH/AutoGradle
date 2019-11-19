@@ -5,11 +5,11 @@ import com.jiangyy.entity.Repository;
 import javax.swing.table.AbstractTableModel;
 import java.util.List;
 
-public class MyTableModel extends AbstractTableModel {
+public class HomeTableModel extends AbstractTableModel {
 
     private List<Repository> allData;
 
-    public MyTableModel(List<Repository> ALL_DATA) {
+    public HomeTableModel(List<Repository> ALL_DATA) {
         this.allData = ALL_DATA;
     }
 

@@ -14,7 +14,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.net.URI;
 import java.util.List;
 
 import static com.jiangyy.entity.DataKt.JSON_STR;
@@ -23,16 +22,22 @@ public class Settings implements Configurable {
 
     private JPanel contentPane;
     private JPanel bottomPane;
-    private JButton buttonRefresh;
     private JButton buttonReset;
     private JPanel tablePane;
-    private JButton 新增Button;
-    private JButton 删除Button;
-    private JLabel label_text;
+    private JButton buttonAdd;
+    private JButton buttonDelete;
+    private JLabel labelCheck;
+    private JButton buttonEdit;
 
-    private String jsonStr = "";
     private int row = 0;
     private boolean isModified = false;
+
+    private SettingsTableModel model;
+
+    private List<Repository> ORepositories; // 原始数据，永不会变
+
+    private List<Repository> tempRepositories;
+    private String tempRepositoriesStr;
 
     /**
      * 在settings中显示的名称
@@ -54,23 +59,66 @@ public class Settings implements Configurable {
     @Override
     public JComponent createComponent() {
 
-        jsonStr = PropertiesComponent.getInstance().getValue("alldata");
-        if (jsonStr == null || jsonStr.isEmpty()) {
-            jsonStr = JSON_STR;
+        tempRepositoriesStr = PropertiesComponent.getInstance().getValue("alldata");
+        if (tempRepositoriesStr == null || tempRepositoriesStr.isEmpty()) {
+            tempRepositoriesStr = JSON_STR;
             PropertiesComponent.getInstance().setValue("alldata", JSON_STR);
         }
-        List<Repository> data = JSON.parseArray(jsonStr, Repository.class);
-        List<Repository> data0 = JSON.parseArray(jsonStr, Repository.class);
-        删除Button.setEnabled(false);
-
-        if (data != null && data0 != null) {
-            SettingsTableModel model = new SettingsTableModel(data);
+        ORepositories = JSON.parseArray(JSON_STR, Repository.class);
+        tempRepositories = JSON.parseArray(tempRepositoriesStr, Repository.class);
+        buttonDelete.setEnabled(false);
+        buttonEdit.setEnabled(false);
+        buttonEdit.addActionListener(e -> {
+            AddDialog dialog = new AddDialog(tempRepositories.get(row));
+            int screenWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
+            int screenHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
+            dialog.setLocation((screenWidth - dialog.getSize().width) / 2, (screenHeight - dialog.getSize().height) / 2);
+            dialog.setOnResultListener(new AddDialog.OnResultListener() {
+                @Override
+                public void onResult(Repository repository) {
+                    tempRepositories.set(row, repository);
+                    model.notify(tempRepositories);
+                    isModified = true;
+                    labelCheck.setText("");
+                }
+            });
+            dialog.pack();
+            dialog.setVisible(true);
+        });
+        buttonAdd.addActionListener(ev -> {
+            AddDialog dialog = new AddDialog();
+            int screenWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
+            int screenHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
+            dialog.setBounds(
+                    0, 0, 800, 400
+            );
+//            dialog.setLocation((screenWidth - dialog.getSize().width) / 2, (screenHeight - dialog.getSize().height) / 2);
+            dialog.setOnResultListener(new AddDialog.OnResultListener() {
+                @Override
+                public void onResult(Repository repository) {
+                    tempRepositories.add(repository);
+                    model.notify(tempRepositories);
+                    isModified = true;
+//                    labelCheck.setText("");
+                }
+            });
+            dialog.pack();
+            dialog.setVisible(true);
+        });
+        buttonReset.addActionListener(e->{
+            tempRepositories = ORepositories;
+            model.notify(tempRepositories);
+            isModified = true;
+            labelCheck.setText("");
+        });
+        if (tempRepositories != null) {
+            model = new SettingsTableModel(tempRepositories);
             JBTable table = new JBTable(model);
-            删除Button.addActionListener(ev -> {
-                data.remove(row);
-                model.notify(data);
+            buttonDelete.addActionListener(ev -> {
+                tempRepositories.remove(row);
+                model.notify(tempRepositories);
                 isModified = true;
-                label_text.setText("");
+                labelCheck.setText("");
             });
             table.setRowHeight(36);
             table.setPreferredScrollableViewportSize(new Dimension(800, 300));
@@ -86,9 +134,10 @@ public class Settings implements Configurable {
 
                 @Override
                 public void mousePressed(MouseEvent e) {
-                    删除Button.setEnabled(true);
+                    buttonDelete.setEnabled(true);
+                    buttonEdit.setEnabled(true);
                     row = table.rowAtPoint(e.getPoint());
-                    label_text.setText("已选中：" + data.get(row).getName());
+                    labelCheck.setText("已选中：" + tempRepositories.get(row).getName());
                 }
 
                 @Override
@@ -127,7 +176,7 @@ public class Settings implements Configurable {
      */
     @Override
     public void apply() throws ConfigurationException {
-        PropertiesComponent.getInstance().setValue("alldata", jsonStr);
+        PropertiesComponent.getInstance().setValue("alldata", tempRepositoriesStr);
     }
 
     /**
