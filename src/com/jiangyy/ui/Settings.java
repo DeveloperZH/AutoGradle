@@ -70,6 +70,7 @@ public class Settings implements Configurable {
                 data.remove(row);
                 model.notify(data);
                 isModified = true;
+                label_text.setText("");
             });
             table.setRowHeight(36);
             table.setPreferredScrollableViewportSize(new Dimension(800, 300));

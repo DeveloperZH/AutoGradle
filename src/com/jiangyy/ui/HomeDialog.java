@@ -16,6 +16,7 @@ import com.jiangyy.entity.Resp;
 import okhttp3.*;
 
 import javax.swing.*;
+import javax.swing.table.TableColumn;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
@@ -96,6 +97,9 @@ public class HomeDialog extends JFrame {
             }
         });
 
+        TableColumn c = table.getColumnModel().getColumn(0);
+        c.setMaxWidth(50);
+        c.setMinWidth(50);
         JBScrollPane scrollPane = new JBScrollPane(table);
         tablePane.setLayout(new GridLayout(1, 0));
         tablePane.add(scrollPane);
