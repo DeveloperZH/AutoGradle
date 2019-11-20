@@ -6,10 +6,10 @@ const val JSON_STR : String = "[\n" +
         "    \"name\": \"AndPermission\",\n" +
         "    \"user\": \"yanzhenjie\",\n" +
         "    \"version\": \"2.0.1\",\n" +
-        "    \"version_x\": \"2.0.1\",\n" +
+        "    \"version_x\": \"2.0.3\",\n" +
         "    \"latest_version\": \"\",\n" +
         "    \"gradle\": \"com.yanzhenjie.permission:support:\",\n" +
-        "    \"gradle_x\": \"com.yanzhenjie.permission:x:\",\n" +
+        "    \"gradle_x\": \"com.yanzhenjie.permission:\",\n" +
         "    \"processor\": \"\",\n" +
         "    \"processor_x\": \"\",\n" +
         "    \"maven\": \"JCenter\",\n" +
@@ -19,8 +19,8 @@ const val JSON_STR : String = "[\n" +
         "    \"isChoose\": false,\n" +
         "    \"name\": \"AndroidUtilCode\",\n" +
         "    \"user\": \"Blankj\",\n" +
-        "    \"version\": \"1.25.3\",\n" +
-        "    \"version_x\": \"1.25.3\",\n" +
+        "    \"version\": \"1.25.9\",\n" +
+        "    \"version_x\": \"1.25.9\",\n" +
         "    \"latest_version\": \"\",\n" +
         "    \"gradle\": \"com.blankj:utilcode:\",\n" +
         "    \"gradle_x\": \"com.blankj:utilcodex:\",\n" +
@@ -33,8 +33,8 @@ const val JSON_STR : String = "[\n" +
         "    \"isChoose\": false,\n" +
         "    \"name\": \"BaseRecyclerViewAdapterHelper\",\n" +
         "    \"user\": \"CymChad\",\n" +
-        "    \"version\": \"2.9.48\",\n" +
-        "    \"version_x\": \"2.9.48-androidx\",\n" +
+        "    \"version\": \"2.9.50\",\n" +
+        "    \"version_x\": \"2.9.50\",\n" +
         "    \"latest_version\": \"\",\n" +
         "    \"gradle\": \"com.github.CymChad:BaseRecyclerViewAdapterHelper:\",\n" +
         "    \"gradle_x\": \"com.github.CymChad:BaseRecyclerViewAdapterHelper:\",\n" +
@@ -47,8 +47,8 @@ const val JSON_STR : String = "[\n" +
         "    \"isChoose\": false,\n" +
         "    \"name\": \"butterknife\",\n" +
         "    \"user\": \"JakeWharton\",\n" +
-        "    \"version\": \"10.1.0\",\n" +
-        "    \"version_x\": \"10.1.0\",\n" +
+        "    \"version\": \"10.2.0\",\n" +
+        "    \"version_x\": \"10.2.0\",\n" +
         "    \"latest_version\": \"\",\n" +
         "    \"gradle\": \"com.jakewharton:butterknife:\",\n" +
         "    \"gradle_x\": \"com.jakewharton:butterknife:\",\n" +
@@ -62,7 +62,7 @@ const val JSON_STR : String = "[\n" +
         "    \"name\": \"CircleImageView\",\n" +
         "    \"user\": \"hdodenhof\",\n" +
         "    \"version\": \"2.2.0\",\n" +
-        "    \"version_x\": \"3.0.0\",\n" +
+        "    \"version_x\": \"3.0.1\",\n" +
         "    \"latest_version\": \"\",\n" +
         "    \"gradle\": \"de.hdodenhof:circleimageview:\",\n" +
         "    \"gradle_x\": \"de.hdodenhof:circleimageview:\",\n" +
@@ -131,8 +131,8 @@ const val JSON_STR : String = "[\n" +
         "    \"isChoose\": false,\n" +
         "    \"name\": \"glide\",\n" +
         "    \"user\": \"bumptech\",\n" +
-        "    \"version\": \"4.9.0\",\n" +
-        "    \"version_x\": \"4.9.0\",\n" +
+        "    \"version\": \"4.10.0\",\n" +
+        "    \"version_x\": \"4.10.0\",\n" +
         "    \"latest_version\": \"\",\n" +
         "    \"gradle\": \"com.github.bumptech.glide:glide:\",\n" +
         "    \"gradle_x\": \"com.github.bumptech.glide:glide:\",\n" +
@@ -145,8 +145,8 @@ const val JSON_STR : String = "[\n" +
         "    \"isChoose\": false,\n" +
         "    \"name\": \"gson\",\n" +
         "    \"user\": \"google\",\n" +
-        "    \"version\": \"2.8.5\",\n" +
-        "    \"version_x\": \"2.8.5\",\n" +
+        "    \"version\": \"2.8.6\",\n" +
+        "    \"version_x\": \"2.8.6\",\n" +
         "    \"latest_version\": \"\",\n" +
         "    \"gradle\": \"com.google.code.gson:gson:\",\n" +
         "    \"gradle_x\": \"com.google.code.gson:gson:\",\n" +
@@ -174,7 +174,7 @@ const val JSON_STR : String = "[\n" +
         "    \"name\": \"lottie-android\",\n" +
         "    \"user\": \"airbnb\",\n" +
         "    \"version\": \"2.7.0\",\n" +
-        "    \"version_x\": \"3.0.7\",\n" +
+        "    \"version_x\": \"3.2.0\",\n" +
         "    \"latest_version\": \"\",\n" +
         "    \"gradle\": \"com.airbnb.android:lottie:\",\n" +
         "    \"gradle_x\": \"com.airbnb.android:lottie:\",\n" +
@@ -201,8 +201,8 @@ const val JSON_STR : String = "[\n" +
         "    \"isChoose\": false,\n" +
         "    \"name\": \"Matisse\",\n" +
         "    \"user\": \"zhihu\",\n" +
-        "    \"version\": \"0.5.2-beta5\",\n" +
-        "    \"version_x\": \"0.5.2-beta5\",\n" +
+        "    \"version\": \"0.5.3-beta3\",\n" +
+        "    \"version_x\": \"0.5.3-beta3\",\n" +
         "    \"latest_version\": \"\",\n" +
         "    \"gradle\": \"com.zhihu.android:matisse:\",\n" +
         "    \"gradle_x\": \"com.zhihu.android:matisse:\",\n" +
@@ -229,8 +229,8 @@ const val JSON_STR : String = "[\n" +
         "    \"isChoose\": false,\n" +
         "    \"name\": \"okhttp\",\n" +
         "    \"user\": \"square\",\n" +
-        "    \"version\": \"4.0.1\",\n" +
-        "    \"version_x\": \"4.0.1\",\n" +
+        "    \"version\": \"4.2.2\",\n" +
+        "    \"version_x\": \"4.2.2\",\n" +
         "    \"latest_version\": \"\",\n" +
         "    \"gradle\": \"com.squareup.okhttp3:okhttp:\",\n" +
         "    \"gradle_x\": \"com.squareup.okhttp3:okhttp:\",\n" +
@@ -271,8 +271,8 @@ const val JSON_STR : String = "[\n" +
         "    \"isChoose\": false,\n" +
         "    \"name\": \"retrofit\",\n" +
         "    \"user\": \"square\",\n" +
-        "    \"version\": \"2.6.0\",\n" +
-        "    \"version_x\": \"2.6.0\",\n" +
+        "    \"version\": \"2.6.2\",\n" +
+        "    \"version_x\": \"2.6.2\",\n" +
         "    \"latest_version\": \"\",\n" +
         "    \"gradle\": \"com.squareup.retrofit2:retrofit:\",\n" +
         "    \"gradle_x\": \"com.squareup.retrofit2:retrofit:\",\n" +
@@ -300,7 +300,7 @@ const val JSON_STR : String = "[\n" +
         "    \"name\": \"RxJava\",\n" +
         "    \"user\": \"ReactiveX\",\n" +
         "    \"version\": \"2.2.10\",\n" +
-        "    \"version_x\": \"3.0.0-RC1\",\n" +
+        "    \"version_x\": \"3.0.0-RC5\",\n" +
         "    \"latest_version\": \"\",\n" +
         "    \"gradle\": \"io.reactivex.rxjava2:rxjava:\",\n" +
         "    \"gradle_x\": \"io.reactivex.rxjava2:rxjava:\",\n" +
@@ -313,8 +313,8 @@ const val JSON_STR : String = "[\n" +
         "    \"isChoose\": false,\n" +
         "    \"name\": \"SmartRefreshLayout\",\n" +
         "    \"user\": \"scwang90\",\n" +
-        "    \"version\": \"1.1.0-alpha-32\",\n" +
-        "    \"version_x\": \"1.1.0-andx-15\",\n" +
+        "    \"version\": \"1.1.0\",\n" +
+        "    \"version_x\": \"1.1.0\",\n" +
         "    \"latest_version\": \"\",\n" +
         "    \"gradle\": \"com.scwang.smartrefresh:SmartRefreshLayout:\",\n" +
         "    \"gradle_x\": \"com.scwang.smartrefresh:SmartRefreshLayout:\",\n" +
@@ -341,8 +341,8 @@ const val JSON_STR : String = "[\n" +
         "    \"isChoose\": false,\n" +
         "    \"name\": \"XPopup\",\n" +
         "    \"user\": \"li-xiaojun\",\n" +
-        "    \"version\": \"1.8.7\",\n" +
-        "    \"version_x\": \"1.8.7-x\",\n" +
+        "    \"version\": \"1.8.10\",\n" +
+        "    \"version_x\": \"1.8.10-x\",\n" +
         "    \"latest_version\": \"\",\n" +
         "    \"gradle\": \"com.lxj:xpopup:\",\n" +
         "    \"gradle_x\": \"com.lxj:xpopup:\",\n" +

@@ -1,6 +1,7 @@
 package com.jiangyy.action;
 
 import com.alibaba.fastjson.JSON;
+import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.notification.NotificationDisplayType;
 import com.intellij.notification.NotificationGroup;
 import com.intellij.notification.NotificationType;
@@ -12,6 +13,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
+import static com.jiangyy.constant.Constant.KEY;
 import static com.jiangyy.entity.DataKt.JSON_STR;
 
 public class AutoGradleAction extends AnAction {
@@ -19,9 +21,17 @@ public class AutoGradleAction extends AnAction {
     @Override
     public void actionPerformed(@NotNull AnActionEvent e) {
 
-        List<Repository> data = JSON.parseArray(JSON_STR, Repository.class);
-        List<Repository> data0 = JSON.parseArray(JSON_STR, Repository.class);
+        String localData =  PropertiesComponent.getInstance().getValue(KEY);
 
+        List<Repository> data,data0;
+
+        if(localData == null || localData.isEmpty()){
+            data = JSON.parseArray(JSON_STR, Repository.class);
+            data0 = JSON.parseArray(JSON_STR, Repository.class);
+        }else{
+            data = JSON.parseArray(localData, Repository.class);
+            data0 = JSON.parseArray(localData, Repository.class);
+        }
         if (data == null || data0 == null) {
             showNotification(e, "error", "提示", "项目列表解析失败");
         } else {
@@ -32,8 +42,8 @@ public class AutoGradleAction extends AnAction {
     }
 
     private void showNotification(@NotNull AnActionEvent e, String displayId, String title, String message) {
-        NotificationGroup noti = new NotificationGroup(displayId, NotificationDisplayType.BALLOON, true);
-        noti.createNotification(
+        NotificationGroup notificationGroup = new NotificationGroup(displayId, NotificationDisplayType.BALLOON, true);
+        notificationGroup.createNotification(
                 title,
                 message,
                 NotificationType.INFORMATION,
