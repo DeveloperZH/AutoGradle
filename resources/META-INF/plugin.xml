@@ -22,23 +22,29 @@
       <br/>
       <ul>
         <li>Ctrl + Alt + 5</li>
+        <li>Right Click Menu</li>
         <li>Tool -> AutoGradle</li>
         <li>Click the button below</li>
       </ul>
       <br/>
-      <p><img src="https://github.com/jyygithub/AutoGradle/blob/master/img/plugin_toolbar.png" width="750" height="30" alt="toolbar_logo.png"/></p>
+      <p><img src="http://qiniu.jiangyy.cn//plugin/AutoGradle/img/toolbar_logo.png" width="750" height="30" alt="toolbar_logo.png"/></p>
       <br/>
       <h2>The following figure is the operation interface</h2>
       <br/>
-      <p><img src="https://github.com/jyygithub/AutoGradle/blob/master/img/plugin_main.png" width="750" height="370" alt="screenshots.png"/></p>
+      <p><img src="http://qiniu.jiangyy.cn//plugin/AutoGradle/img/home_dialog1.png" width="750" height="370" alt="screenshots.png"/></p>
+      <br/>
+      <h2>The settings interface</h2>
+      <p><img src="http://qiniu.jiangyy.cn//plugin/AutoGradle/img/settings.png" width="800" height="484" alt="settings.png"/></p>
       <br/>
       <p><a href="https://github.com/jyygithub/AutoGradle/issues">Send feedback</a></p>
+      <br/>
     ]]></description>
 
     <change-notes><![CDATA[
       <ul>
-        <li>增加Repository</li>
-        <li>新增AndroidX支持</li>
+        <li>增加和修改Repository</li>
+        <li>新增Settings界面，增加新增、修改功能，可自定义项目列表和版本信息</li>
+        <li>新增右键菜单入口</li>
         <li>修复BUG</li>
       </ul>
       <a href="https://github.com/jyygithub/AutoGradle/blob/master/CHANGELOG.md"><b>Full Changelog History</b></a>
