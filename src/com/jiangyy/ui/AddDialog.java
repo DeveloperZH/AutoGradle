@@ -41,6 +41,10 @@ public class AddDialog extends JDialog {
         textFieldProcessorX.setText(repository.getProcessor_x());
         textFieldVersion.setText(repository.getVersion());
         textFieldVersionX.setText(repository.getVersion_x());
+        repository.getMaven();
+        if(!repository.getMaven().isEmpty()){
+            comboBox1.setSelectedItem(repository.getMaven());
+        }
     }
 
     public AddDialog() {
@@ -61,11 +65,7 @@ public class AddDialog extends JDialog {
             }
         });
         // call onCancel() on ESCAPE
-        contentPane.registerKeyboardAction(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onCancel();
-            }
-        }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        contentPane.registerKeyboardAction(e -> onCancel(), KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
         comboBox1.addItem("JCenter");
         comboBox1.addItem("MavenCenter");
         comboBox1.addItem("JitPack");

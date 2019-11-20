@@ -11,11 +11,15 @@ import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
+import javax.swing.table.TableCellEditor;
+import javax.swing.table.TableColumn;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.net.URI;
 import java.util.List;
 
+import static com.jiangyy.constant.Constant.KEY;
 import static com.jiangyy.entity.DataKt.JSON_STR;
 
 public class Settings implements Configurable {
@@ -38,8 +42,6 @@ public class Settings implements Configurable {
 
     private List<Repository> tempRepositories;
     private String tempRepositoriesStr;
-
-    private final String KEY = "alldata";
 
     /**
      * 在settings中显示的名称
@@ -75,14 +77,11 @@ public class Settings implements Configurable {
             int screenWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
             int screenHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
             dialog.setLocation((screenWidth - dialog.getSize().width) / 2, (screenHeight - dialog.getSize().height) / 2);
-            dialog.setOnResultListener(new AddDialog.OnResultListener() {
-                @Override
-                public void onResult(Repository repository) {
-                    tempRepositories.set(row, repository);
-                    model.notify(tempRepositories);
-                    isModified = true;
-                    labelCheck.setText("");
-                }
+            dialog.setOnResultListener(repository -> {
+                tempRepositories.set(row, repository);
+                model.notify(tempRepositories);
+                isModified = true;
+                labelCheck.setText("");
             });
             dialog.pack();
             dialog.setVisible(true);
@@ -118,6 +117,8 @@ public class Settings implements Configurable {
             JBTable table = new JBTable(model);
             buttonDelete.addActionListener(ev -> {
                 tempRepositories.remove(row);
+                buttonDelete.setEnabled(false);
+                buttonEdit.setEnabled(false);
                 model.notify(tempRepositories);
                 isModified = true;
                 labelCheck.setText("");
@@ -125,13 +126,27 @@ public class Settings implements Configurable {
             table.setRowHeight(36);
             table.setPreferredScrollableViewportSize(new Dimension(800, 300));
             table.setFillsViewportHeight(true);
+            TableColumn c = table.getColumnModel().getColumn(3);
+            c.setMinWidth(80);
             JBScrollPane scrollPane = new JBScrollPane(table);
             tablePane.setLayout(new GridLayout(1, 0));
             tablePane.add(scrollPane);
             table.addMouseListener(new MouseListener() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
+                    int row = table.rowAtPoint(e.getPoint());
+                    int col = table.columnAtPoint(e.getPoint());
+                    if (col == 3) {
+                        Desktop desktop = Desktop.getDesktop();
+                        try {
+                            URI uri = new URI("http://www.github.com/" + tempRepositories.get(row).getUser() + "/" + tempRepositories.get(row).getName());
+                            desktop.browse(uri);
+                        } catch (Exception ex) {
+                            // do nothing
+                            ex.printStackTrace();
+                        }
 
+                    }
                 }
 
                 @Override
@@ -178,9 +193,9 @@ public class Settings implements Configurable {
      */
     @Override
     public void apply() throws ConfigurationException {
-        PropertiesComponent.getInstance(
-
-        ).setValue(KEY, tempRepositoriesStr);
+        tempRepositoriesStr = JSON.toJSONString(tempRepositories);
+        PropertiesComponent.getInstance().setValue(KEY, tempRepositoriesStr);
+        isModified = false;
     }
 
     /**
@@ -188,7 +203,7 @@ public class Settings implements Configurable {
      */
     @Override
     public void reset() {
-
+        isModified = true;
     }
 
     @Override
